@@ -21,4 +21,8 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  optimizeDeps: {
+    // This forces Vite to pre-bundle these so the ?url query works correctly
+    include: ['@fontsource/poppins'],
+  },
 })
