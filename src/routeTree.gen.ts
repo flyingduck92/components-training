@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ButtonVariantIndexRouteImport } from './routes/button-variant/index'
 import { Route as ButtonBooleanIndexRouteImport } from './routes/button-boolean/index'
+import { Route as AccordionIndexRouteImport } from './routes/accordion/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,33 +29,42 @@ const ButtonBooleanIndexRoute = ButtonBooleanIndexRouteImport.update({
   path: '/button-boolean/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccordionIndexRoute = AccordionIndexRouteImport.update({
+  id: '/accordion/',
+  path: '/accordion/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/accordion/': typeof AccordionIndexRoute
   '/button-boolean/': typeof ButtonBooleanIndexRoute
   '/button-variant/': typeof ButtonVariantIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/accordion': typeof AccordionIndexRoute
   '/button-boolean': typeof ButtonBooleanIndexRoute
   '/button-variant': typeof ButtonVariantIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/accordion/': typeof AccordionIndexRoute
   '/button-boolean/': typeof ButtonBooleanIndexRoute
   '/button-variant/': typeof ButtonVariantIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/button-boolean/' | '/button-variant/'
+  fullPaths: '/' | '/accordion/' | '/button-boolean/' | '/button-variant/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/button-boolean' | '/button-variant'
-  id: '__root__' | '/' | '/button-boolean/' | '/button-variant/'
+  to: '/' | '/accordion' | '/button-boolean' | '/button-variant'
+  id: '__root__' | '/' | '/accordion/' | '/button-boolean/' | '/button-variant/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccordionIndexRoute: typeof AccordionIndexRoute
   ButtonBooleanIndexRoute: typeof ButtonBooleanIndexRoute
   ButtonVariantIndexRoute: typeof ButtonVariantIndexRoute
 }
@@ -82,11 +92,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ButtonBooleanIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/accordion/': {
+      id: '/accordion/'
+      path: '/accordion'
+      fullPath: '/accordion/'
+      preLoaderRoute: typeof AccordionIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccordionIndexRoute: AccordionIndexRoute,
   ButtonBooleanIndexRoute: ButtonBooleanIndexRoute,
   ButtonVariantIndexRoute: ButtonVariantIndexRoute,
 }
