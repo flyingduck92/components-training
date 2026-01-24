@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@layer base {
+
+  body {
+    font-family: -apple-system, 'Poppins', sans-serif;
+  }
+
+  nav>a.active {
+    @apply underline font-bold transition-all;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold leading-none;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+
+  button>svg {
+    @apply mr-1;
+  }
+
+}
