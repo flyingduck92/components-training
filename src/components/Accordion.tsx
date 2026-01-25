@@ -16,7 +16,11 @@ function Accordion({ items }: AccordionProps) {
 
   const handleExpand = (updatedIndex: number) => {
     setExpandedIndex((currentIndex) => {
-      return currentIndex === updatedIndex ? -1 : updatedIndex
+      if (currentIndex === updatedIndex) {
+        return -1
+      } else {
+        return updatedIndex
+      }
     })
   }
 
@@ -25,15 +29,18 @@ function Accordion({ items }: AccordionProps) {
     const icon = (
       <span className='text-4xl'>
         <ChevronRight
-          className={`transition-transform duration-200 ${isExpand ? 'rotate-90 stroke-3 stroke-white' : 'rotate-0'}`}
+          className={`transition-transform duration-200 stroke-3 ${isExpand && 'rotate-90 stroke-white'}`}
         />
       </span>
     )
 
     return (
-      <div key={item.id}>
+      <div
+        key={item.id}
+        className='border-b border-white/10'
+      >
         <div
-          className={`flex items-center justify-between p-2 font-bold ${isExpand ? 'bg-blue-500 text-white' : 'bg-blue-300'} `}
+          className={`cursor-pointer flex items-center justify-between p-2 font-bold ${isExpand ? 'bg-blue-500 text-white' : 'bg-blue-300'} `}
           onClick={() => handleExpand(index)}
         >
           {item.label}

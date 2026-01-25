@@ -18,12 +18,13 @@ const navItems: NavLinkItem[] = [
   { to: '/button-boolean', label: 'Button Boolean' },
   { to: '/button-variant', label: 'Button Variant' },
   { to: '/accordion', label: 'Accordion' },
+  { to: '/dropdown', label: 'Dropdown' },
 ]
 
 function RootLayout() {
   return (
     <main className='flex min-h-screen'>
-      <nav className='w-40 flex p-4 flex-col gap-2 text-center'>
+      <nav className='w-48 flex p-4 flex-col gap-2 text-center'>
         {navItems.map((item) => (
           <Link
             key={item.to}
