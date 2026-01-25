@@ -20,7 +20,7 @@ function DropdownPage() {
     { label: 'Green', value: 'green' },
   ]
 
-  const handleChange = (option: Option) => {
+  const handleChangeOne = (option: Option) => {
     setSelection(option)
   }
 
@@ -28,11 +28,13 @@ function DropdownPage() {
     <main className='bg-white min-h-screen'>
       <h1 className='mb-8'>Dropdown Documentation</h1>
 
-      <Dropdown
-        options={options}
-        value={selection}
-        onChange={handleChange}
-      />
+      <div className='flex items-center gap-4'>
+        <Dropdown
+          options={options}
+          value={selection}
+          onChange={handleChangeOne}
+        />
+      </div>
     </main>
   )
 }

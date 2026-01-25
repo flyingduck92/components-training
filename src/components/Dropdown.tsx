@@ -1,5 +1,5 @@
 import { CheckIcon, ChevronDownIcon } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Panel from './Panel'
 
 type Option = {
@@ -14,7 +14,26 @@ type DropdownProps = {
 }
 
 function Dropdown({ options, value, onChange }: DropdownProps) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const divEl = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const handler = (event: MouseEvent) => {
+      if (!divEl.current) {
+        return
+      }
+
+      if (!divEl.current.contains(event?.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('click', handler)
+
+    return () => {
+      document.removeEventListener('click', handler)
+    }
+  }, [])
 
   const icon = (
     <span className='text-4xl'>
@@ -62,7 +81,10 @@ function Dropdown({ options, value, onChange }: DropdownProps) {
   ))
 
   return (
-    <div className='w-48 relative select-none'>
+    <div
+      ref={divEl}
+      className='w-48 relative select-none'
+    >
       <Panel
         className='flex items-center justify-between cursor-pointer p-2'
         onClick={handleClick}
