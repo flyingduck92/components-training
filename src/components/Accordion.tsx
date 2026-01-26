@@ -29,7 +29,7 @@ function Accordion({ items }: AccordionProps) {
     const icon = (
       <span className='text-4xl'>
         <ChevronRight
-          className={`transition-transform duration-200 stroke-3 ${isExpand && 'rotate-90 stroke-white'}`}
+          className={`transition-transform duration-150 stroke-3 ${isExpand && 'rotate-90 stroke-white'}`}
         />
       </span>
     )
@@ -40,7 +40,7 @@ function Accordion({ items }: AccordionProps) {
         className='border-b border-white/10'
       >
         <div
-          className={`cursor-pointer flex items-center justify-between p-2 font-bold ${isExpand ? 'bg-blue-500 text-white' : 'bg-blue-300'} `}
+          className={`cursor-pointer flex items-center justify-between p-2 font-bold transition-colors duration-150 ${isExpand ? 'bg-blue-500 text-white' : 'bg-blue-300'} `}
           onClick={() => handleExpand(index)}
         >
           {item.label}

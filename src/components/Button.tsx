@@ -37,7 +37,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 }) => {
   let classes = cn([
     `flex items-center px-3 py-1 border`, // default
-    `transition-colors duration-150 ease-out transition-transform duration-100 ease-out`, // transition
+    `transition-colors transition-transform duration-150 ease-out`, // transition
     `active:scale-95 disabled:active:scale-100`, // :active (when user click)
     {
       'border-blue-500 bg-blue-500 hover:bg-blue-600 hover:border-blue-600':

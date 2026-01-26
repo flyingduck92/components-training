@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@sglara/cn'
 
 const buttonVariants = cva(
-  `flex items-center px-3 py-1 border transition-colors duration-150 ease-out transition-transform duration-100 ease-out active:scale-95 disabled:active:scale-100`,
+  `flex items-center px-3 py-1 border transition-all duration-150 ease-out active:scale-95 disabled:active:scale-100`,
   {
     variants: {
       variant: {
