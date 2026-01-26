@@ -26,7 +26,7 @@ function RouteComponent() {
     },
     {
       label: 'Color',
-      render: (item: Fruit) => <td className={`size-5 ${item.color}`}></td>,
+      render: (item: Fruit) => <div className={`size-5 ${item.color}`}></div>,
     },
     {
       label: 'Score',
