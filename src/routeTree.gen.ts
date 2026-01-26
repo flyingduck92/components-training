@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TableIndexRouteImport } from './routes/table/index'
 import { Route as ModalIndexRouteImport } from './routes/modal/index'
 import { Route as DropdownIndexRouteImport } from './routes/dropdown/index'
 import { Route as ButtonVariantIndexRouteImport } from './routes/button-variant/index'
@@ -19,6 +20,11 @@ import { Route as AccordionIndexRouteImport } from './routes/accordion/index'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TableIndexRoute = TableIndexRouteImport.update({
+  id: '/table/',
+  path: '/table/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ModalIndexRoute = ModalIndexRouteImport.update({
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/button-variant/': typeof ButtonVariantIndexRoute
   '/dropdown/': typeof DropdownIndexRoute
   '/modal/': typeof ModalIndexRoute
+  '/table/': typeof TableIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/button-variant': typeof ButtonVariantIndexRoute
   '/dropdown': typeof DropdownIndexRoute
   '/modal': typeof ModalIndexRoute
+  '/table': typeof TableIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/button-variant/': typeof ButtonVariantIndexRoute
   '/dropdown/': typeof DropdownIndexRoute
   '/modal/': typeof ModalIndexRoute
+  '/table/': typeof TableIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/button-variant/'
     | '/dropdown/'
     | '/modal/'
+    | '/table/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/button-variant'
     | '/dropdown'
     | '/modal'
+    | '/table'
   id:
     | '__root__'
     | '/'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/button-variant/'
     | '/dropdown/'
     | '/modal/'
+    | '/table/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,6 +118,7 @@ export interface RootRouteChildren {
   ButtonVariantIndexRoute: typeof ButtonVariantIndexRoute
   DropdownIndexRoute: typeof DropdownIndexRoute
   ModalIndexRoute: typeof ModalIndexRoute
+  TableIndexRoute: typeof TableIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -115,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/table/': {
+      id: '/table/'
+      path: '/table'
+      fullPath: '/table/'
+      preLoaderRoute: typeof TableIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/modal/': {
@@ -162,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   ButtonVariantIndexRoute: ButtonVariantIndexRoute,
   DropdownIndexRoute: DropdownIndexRoute,
   ModalIndexRoute: ModalIndexRoute,
+  TableIndexRoute: TableIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

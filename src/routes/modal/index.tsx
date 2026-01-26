@@ -9,14 +9,8 @@ export const Route = createFileRoute('/modal/')({
 
 function ModalPage() {
   const [isOpen, setIsOpen] = useState<boolean>(false)
-
-  const handleOpenModal = () => {
-    setIsOpen((prev) => !prev)
-  }
-
-  const handleClose = () => {
-    setIsOpen(false)
-  }
+  const handleOpenModal = () => setIsOpen((prev) => !prev)
+  const handleClose = () => setIsOpen(false)
 
   const modal = (
     <Modal
@@ -40,7 +34,7 @@ function ModalPage() {
 
   return (
     <main className='bg-white min-h-screen'>
-      <h1 className='mb-8'>Dropdown Documentation</h1>
+      <h1 className='mb-8'>Modal Documentation</h1>
 
       <Button
         primary

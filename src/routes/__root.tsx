@@ -15,6 +15,7 @@ const navItems = [
   { to: '/accordion', label: 'Accordion' },
   { to: '/dropdown', label: 'Dropdown' },
   { to: '/modal', label: 'Modal' },
+  { to: '/table', label: 'Table' },
 ]
 
 function RootLayout() {
