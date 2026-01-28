@@ -1,18 +1,24 @@
-type configProps<T> = {
+import { Fragment } from 'react'
+
+export type configProps<T> = {
   label: string
   render: (item: T) => React.ReactNode
+  header?: () => React.ReactNode
 }
 
-type TableProps<T> = {
+export type TableProps<T> = {
   data: T[]
   config: configProps<T>[]
   keyFn: (item: T) => string | number
 }
 
-function Table<T>({ data, config, keyFn }: TableProps<T>) {
-  const renderedHeaders = config.map((column) => (
-    <th key={column.label}>{column.label}</th>
-  ))
+export default function Table<T>({ data, config, keyFn }: TableProps<T>) {
+  const renderedHeaders = config.map((column) => {
+    if (column?.header) {
+      return <Fragment key={column.label}>{column.header()}</Fragment>
+    }
+    return <th key={column.label}>{column.label}</th>
+  })
 
   const renderedRows = data.map((rowData) => {
     const renderedCells = config.map((column) => (
@@ -43,5 +49,3 @@ function Table<T>({ data, config, keyFn }: TableProps<T>) {
     </table>
   )
 }
-
-export default Table
