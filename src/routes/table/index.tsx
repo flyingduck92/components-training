@@ -1,5 +1,6 @@
 // import Table from '@/components/Table'
 import SortableTable from '@/components/SortableTable'
+import Table from '@/components/Table'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/table/')({
@@ -40,8 +41,18 @@ function RouteComponent() {
   const keyFn = (item: Fruit) => item.name
 
   return (
-    <main className='bg-white min-h-screen'>
-      <h1 className='mb-8'>Table Documentation</h1>
+    <main className='bg-white min-h-screen space-y-5'>
+      <h1>Table Documentations</h1>
+
+      <h5>Unsortable Table Documentation</h5>
+
+      <Table
+        data={data}
+        config={config}
+        keyFn={keyFn}
+      />
+
+      <h5>Sortable Table Documentation</h5>
 
       <SortableTable
         data={data}

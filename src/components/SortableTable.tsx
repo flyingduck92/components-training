@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Table, { type configProps, type TableProps } from './Table'
+import { ArrowDownUpIcon, ArrowDownZAIcon, ArrowUpAZIcon } from 'lucide-react'
 
 type SortableTableConfigProps<T> = configProps<T> & {
   sortValue?: (item: T) => string | number
@@ -12,7 +13,7 @@ type SortableTableProps<T> = TableProps<T> & {
 function SortableTable<T>(props: SortableTableProps<T>) {
   const { config, data } = props
 
-  const [sortOrder, setSortOrder] = useState<null | string>(null)
+  const [sortOrder, setSortOrder] = useState<null | 'asc' | 'desc'>(null)
   const [sortBy, setSortBy] = useState<null | string>(null)
 
   const handleClick = (label: string | null) => {
@@ -35,6 +36,26 @@ function SortableTable<T>(props: SortableTableProps<T>) {
     }
   }
 
+  const getIcons = (
+    label: string,
+    sortField: string | null,
+    sortDirection: 'asc' | 'desc' | null,
+    iconSize = 16,
+  ) => {
+    // label != sortField or sortDirection is NULL
+    if (label !== sortField || sortDirection === null) {
+      return <ArrowDownUpIcon size={iconSize} />
+    }
+
+    // ASC/DESC
+    return sortDirection === 'asc' ? (
+      <ArrowUpAZIcon size={iconSize} />
+    ) : (
+      <ArrowDownZAIcon size={iconSize} />
+    )
+  }
+
+  // add `header` props if `sortValue` exists
   const updatedConfig: configProps<T>[] = config.map(
     (column: SortableTableConfigProps<T>) => {
       if (!column.sortValue) {
@@ -45,10 +66,11 @@ function SortableTable<T>(props: SortableTableProps<T>) {
         ...column,
         header: () => (
           <th
-            className='cursor-pointer'
+            className='cursor-pointer flex items-center gap-2'
             onClick={() => handleClick(column.label)}
           >
-            {column.label} is SORTABLE
+            {getIcons(column.label, sortBy, sortOrder)}
+            {column.label}
           </th>
         ),
       }
@@ -79,16 +101,11 @@ function SortableTable<T>(props: SortableTableProps<T>) {
   }
 
   return (
-    <>
-      <h5>
-        sortOrder: {sortOrder || 'unsorted'} {sortBy !== null && `by ${sortBy}`}
-      </h5>
-      <Table
-        {...props}
-        data={sortedData}
-        config={updatedConfig}
-      />
-    </>
+    <Table
+      {...props}
+      data={sortedData}
+      config={updatedConfig}
+    />
   )
 }
 

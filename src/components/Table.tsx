@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment } from 'react/jsx-runtime'
 
 export type configProps<T> = {
   label: string
