@@ -44,7 +44,7 @@ function RouteComponent() {
     <main className='bg-white min-h-screen space-y-5'>
       <h1>Table Documentations</h1>
 
-      <h5>Unsortable Table Documentation</h5>
+      <h5 className='underline'>Unsortable Table</h5>
 
       <Table
         data={data}
@@ -52,7 +52,7 @@ function RouteComponent() {
         keyFn={keyFn}
       />
 
-      <h5>Sortable Table Documentation</h5>
+      <h5 className='underline'>Sortable Table </h5>
 
       <SortableTable
         data={data}
