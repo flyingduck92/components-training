@@ -1,16 +1,5 @@
 import { Fragment } from 'react/jsx-runtime'
-
-export type configProps<T> = {
-  label: string
-  render: (item: T) => React.ReactNode
-  header?: () => React.ReactNode
-}
-
-export type TableProps<T> = {
-  data: T[]
-  config: configProps<T>[]
-  keyFn: (item: T) => string | number
-}
+import { type TableProps } from '@/types/basic-table-types'
 
 export default function Table<T>({ data, config, keyFn }: TableProps<T>) {
   const renderedHeaders = config.map((column) => {
