@@ -41,24 +41,29 @@ function RouteComponent() {
   const keyFn = (item: Fruit) => item.name
 
   return (
-    <main className='bg-white min-h-screen space-y-5'>
+    <main className='bg-white min-h-screen'>
       <h1>Table Documentations</h1>
 
-      <h5 className='underline'>Unsortable Table</h5>
+      <section className='flex gap-8 mt-5'>
+        <div className='space-y-5'>
+          <h5>Basic Table</h5>
 
-      <Table
-        data={data}
-        config={config}
-        keyFn={keyFn}
-      />
+          <Table
+            data={data}
+            config={config}
+            keyFn={keyFn}
+          />
+        </div>
+        <div className='space-y-5'>
+          <h5>Sortable Table</h5>
 
-      <h5 className='underline'>Sortable Table </h5>
-
-      <SortableTable
-        data={data}
-        config={config}
-        keyFn={keyFn}
-      />
+          <SortableTable
+            data={data}
+            config={config}
+            keyFn={keyFn}
+          />
+        </div>
+      </section>
     </main>
   )
 }
