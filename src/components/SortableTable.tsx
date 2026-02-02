@@ -9,10 +9,10 @@ import useSort from '@/hooks/useSort'
 function SortableTable<T>(props: SortableTableProps<T>) {
   const { config, data } = props
 
-  const { sortOrder, sortBy, sortedData, setSortedColumn } = useSort({
+  const { sortOrder, sortBy, sortedData, setSortedColumn } = useSort(
     data,
     config,
-  })
+  )
 
   const getIcons = (
     label: string,

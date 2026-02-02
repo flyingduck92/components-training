@@ -4,7 +4,10 @@ import {
   type UseSortTypes,
 } from '@/types/sortable-table-types'
 
-function useSort<T>({ data, config }: UseSortTypes<T>) {
+function useSort<T>(
+  data: UseSortTypes<T>['data'],
+  config: UseSortTypes<T>['config'],
+) {
   const [sortOrder, setSortOrder] = useState<null | 'asc' | 'desc'>(null)
   const [sortBy, setSortBy] = useState<null | string>(null)
 
