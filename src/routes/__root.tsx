@@ -16,6 +16,8 @@ const navItems = [
   { to: '/dropdown', label: 'Dropdown' },
   { to: '/modal', label: 'Modal' },
   { to: '/table', label: 'Table' },
+  { to: '/counter', label: 'Counter' },
+  { to: '/counter-immer', label: 'Counter Immer' },
 ]
 
 function RootLayout() {

@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as TableIndexRouteImport } from './routes/table/index'
 import { Route as ModalIndexRouteImport } from './routes/modal/index'
 import { Route as DropdownIndexRouteImport } from './routes/dropdown/index'
+import { Route as CounterIndexRouteImport } from './routes/counter/index'
+import { Route as CounterImmerIndexRouteImport } from './routes/counter-immer/index'
 import { Route as ButtonVariantIndexRouteImport } from './routes/button-variant/index'
 import { Route as ButtonBooleanIndexRouteImport } from './routes/button-boolean/index'
 import { Route as AccordionIndexRouteImport } from './routes/accordion/index'
@@ -37,6 +39,16 @@ const DropdownIndexRoute = DropdownIndexRouteImport.update({
   path: '/dropdown/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CounterIndexRoute = CounterIndexRouteImport.update({
+  id: '/counter/',
+  path: '/counter/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CounterImmerIndexRoute = CounterImmerIndexRouteImport.update({
+  id: '/counter-immer/',
+  path: '/counter-immer/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ButtonVariantIndexRoute = ButtonVariantIndexRouteImport.update({
   id: '/button-variant/',
   path: '/button-variant/',
@@ -58,6 +70,8 @@ export interface FileRoutesByFullPath {
   '/accordion/': typeof AccordionIndexRoute
   '/button-boolean/': typeof ButtonBooleanIndexRoute
   '/button-variant/': typeof ButtonVariantIndexRoute
+  '/counter-immer/': typeof CounterImmerIndexRoute
+  '/counter/': typeof CounterIndexRoute
   '/dropdown/': typeof DropdownIndexRoute
   '/modal/': typeof ModalIndexRoute
   '/table/': typeof TableIndexRoute
@@ -67,6 +81,8 @@ export interface FileRoutesByTo {
   '/accordion': typeof AccordionIndexRoute
   '/button-boolean': typeof ButtonBooleanIndexRoute
   '/button-variant': typeof ButtonVariantIndexRoute
+  '/counter-immer': typeof CounterImmerIndexRoute
+  '/counter': typeof CounterIndexRoute
   '/dropdown': typeof DropdownIndexRoute
   '/modal': typeof ModalIndexRoute
   '/table': typeof TableIndexRoute
@@ -77,6 +93,8 @@ export interface FileRoutesById {
   '/accordion/': typeof AccordionIndexRoute
   '/button-boolean/': typeof ButtonBooleanIndexRoute
   '/button-variant/': typeof ButtonVariantIndexRoute
+  '/counter-immer/': typeof CounterImmerIndexRoute
+  '/counter/': typeof CounterIndexRoute
   '/dropdown/': typeof DropdownIndexRoute
   '/modal/': typeof ModalIndexRoute
   '/table/': typeof TableIndexRoute
@@ -88,6 +106,8 @@ export interface FileRouteTypes {
     | '/accordion/'
     | '/button-boolean/'
     | '/button-variant/'
+    | '/counter-immer/'
+    | '/counter/'
     | '/dropdown/'
     | '/modal/'
     | '/table/'
@@ -97,6 +117,8 @@ export interface FileRouteTypes {
     | '/accordion'
     | '/button-boolean'
     | '/button-variant'
+    | '/counter-immer'
+    | '/counter'
     | '/dropdown'
     | '/modal'
     | '/table'
@@ -106,6 +128,8 @@ export interface FileRouteTypes {
     | '/accordion/'
     | '/button-boolean/'
     | '/button-variant/'
+    | '/counter-immer/'
+    | '/counter/'
     | '/dropdown/'
     | '/modal/'
     | '/table/'
@@ -116,6 +140,8 @@ export interface RootRouteChildren {
   AccordionIndexRoute: typeof AccordionIndexRoute
   ButtonBooleanIndexRoute: typeof ButtonBooleanIndexRoute
   ButtonVariantIndexRoute: typeof ButtonVariantIndexRoute
+  CounterImmerIndexRoute: typeof CounterImmerIndexRoute
+  CounterIndexRoute: typeof CounterIndexRoute
   DropdownIndexRoute: typeof DropdownIndexRoute
   ModalIndexRoute: typeof ModalIndexRoute
   TableIndexRoute: typeof TableIndexRoute
@@ -151,6 +177,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DropdownIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/counter/': {
+      id: '/counter/'
+      path: '/counter'
+      fullPath: '/counter/'
+      preLoaderRoute: typeof CounterIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/counter-immer/': {
+      id: '/counter-immer/'
+      path: '/counter-immer'
+      fullPath: '/counter-immer/'
+      preLoaderRoute: typeof CounterImmerIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/button-variant/': {
       id: '/button-variant/'
       path: '/button-variant'
@@ -180,6 +220,8 @@ const rootRouteChildren: RootRouteChildren = {
   AccordionIndexRoute: AccordionIndexRoute,
   ButtonBooleanIndexRoute: ButtonBooleanIndexRoute,
   ButtonVariantIndexRoute: ButtonVariantIndexRoute,
+  CounterImmerIndexRoute: CounterImmerIndexRoute,
+  CounterIndexRoute: CounterIndexRoute,
   DropdownIndexRoute: DropdownIndexRoute,
   ModalIndexRoute: ModalIndexRoute,
   TableIndexRoute: TableIndexRoute,

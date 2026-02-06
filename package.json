@@ -16,6 +16,7 @@
     "@tanstack/react-router-devtools": "^1.157.9",
     "@tanstack/router-plugin": "^1.157.9",
     "class-variance-authority": "^0.7.1",
+    "immer": "^11.1.3",
     "lucide-react": "^0.563.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
