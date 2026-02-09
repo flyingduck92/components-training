@@ -6,7 +6,7 @@ import { produce } from 'immer'
 import { useReducer, type FormEvent } from 'react'
 
 export const Route = createFileRoute('/counter-immer/')({
-  component: RouteComponent,
+  component: CounterImmerPage,
 })
 
 const INCREMENT_COUNT = 'increment_count'
@@ -34,7 +34,7 @@ const reducer = (state: CounterState, action: CounterActions) => {
   }
 }
 
-function RouteComponent() {
+function CounterImmerPage() {
   const [state, dispatch] = useReducer(produce(reducer), {
     count: 10,
     valueToAdd: 0,
